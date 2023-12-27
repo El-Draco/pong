@@ -1,0 +1,14 @@
+FROM debian:bullseye
+
+ARG DEBIAN_FRONTEND="noninteractive"
+ARG DEBCONF_NOWARNINGS="yes"
+
+ARG POSTGRES_DB
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+
+RUN apt-get update
+
+EXPOSE 3306
+
+CMD ["bash"]
