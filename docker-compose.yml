@@ -9,7 +9,7 @@ services:
       - ./.env
     restart: on-failure
     ports:
-      - 8010:8010
+      - 8080:8080
     volumes:
       - ./Frontend/srcs:/usr/share/nginx/html
       - ./Frontend/srcs/default:/etc/nginx/conf.d/default
@@ -21,24 +21,27 @@ services:
   app:
     build:
       context: ./Backend
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./Backend/srcs:/app/
     ports:
-      - 8080:8080
+      - 8000:8000
     env_file:
       - ./.env
     restart: on-failure
     depends_on:
-      - postgres
+      - postgresdb
     networks:
       - backend
 
-  postgres:
-    container_name: postgres
+  postgresdb:
+    container_name: postgresdb
     build:
       context: ./Postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
     env_file:
       - ./.env
     restart: on-failure

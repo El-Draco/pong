@@ -26,7 +26,7 @@ RUN chmod +x /app/entrypoint.sh
 # copy project
 COPY ./srcs .
 
-EXPOSE 8080
+EXPOSE 8000
 
 # run entrypoint.sh
 CMD ["./entrypoint.sh"]

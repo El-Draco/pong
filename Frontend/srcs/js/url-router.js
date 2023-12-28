@@ -22,22 +22,37 @@ const urlRoutes = {
 		title: "Home | " + urlPageTitle,
 		description: "This is the home page",
 	},
-	"/about": {
-		template: "/templates/about.html",
-		title: "About Us | " + urlPageTitle,
-		description: "This is the about page",
+	"/login": {
+		template: "/templates/login.html",
+		title: "Login | " + urlPageTitle,
+		description: "This is the LOGIN page",
 	},
-	"/contact": {
-		template: "/templates/contact.html",
-		title: "Contact Us | " + urlPageTitle,
-		description: "This is the contact page",
+	"/register": {
+		template: "/templates/register.html",
+		title: "Register | " + urlPageTitle,
+		description: "This is the REGISTER page",
+	},
+	"/dashboard": {
+		template: "/templates/dashboard.html",
+		title: "Dashboard | " + urlPageTitle,
+		description: "This is the DASHBOARD page",
+	},
+	"/play": {
+		template: "/templates/play.html",
+		title: "Play Pong | " + urlPageTitle,
+		description: "This is the PLAY page",
+	},
+	"/profiles": {
+		template: "/templates/profiles.html",
+		title: "Profiles | " + urlPageTitle,
+		description: "This is the Profiles page",
 	},
 };
 
 // create a function that watches the url and calls the urlLocationHandler
 const urlRoute = (event) => {
 	event = event || window.event; // get window.event if event argument not provided
-	event.preventDefault();
+	// event.preventDefault();
 	// window.history.pushState(state, unused, target link);
 	window.history.pushState({}, "", event.target.href);
 	urlLocationHandler();
@@ -50,6 +65,7 @@ const urlLocationHandler = async () => {
 	if (location.length == 0) {
 		location = "/";
 	}
+	console.log(location);
 	// get the route object from the urlRoutes object
 	const route = urlRoutes[location] || urlRoutes["404"];
 	// get the html from the template

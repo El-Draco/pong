@@ -8,6 +8,6 @@ RUN apt-get update && \
 
 COPY ./srcs/default /etc/nginx/sites-enabled/default
 
-EXPOSE	8010
+EXPOSE	8080
 
 CMD ["nginx", "-g" ,"daemon off;"]
