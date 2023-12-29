@@ -16,7 +16,7 @@ RUN pip install --upgrade pip
 
 COPY ./srcs/requirements.txt .
 
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt && apt install -y netcat
 
 # copy entrypoint.sh
 COPY ./srcs/ /app
@@ -29,6 +29,4 @@ COPY ./srcs .
 EXPOSE 8000
 
 # run entrypoint.sh
-CMD ["./entrypoint.sh"]
-CMD ["ls"]
-CMD ["python", "manage.py", "runserver", "8080"]
+ENTRYPOINT ["./entrypoint.sh"]

@@ -1,5 +1,5 @@
 server {
-    listen 8080;
+    listen 8090;
     server_name www.localh;
 
     root /usr/share/nginx/html;
